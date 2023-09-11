@@ -2,7 +2,7 @@ from google.cloud import storage
 import tensorflow as tf
 from PIL import Image
 import numpy as np
-from tensorflow.keras.modes import load_model
+from tensorflow.keras.models import load_model
 
 model = None
 interpreter = None
@@ -32,9 +32,9 @@ def predict(request):
             BUCKET_NAME,
             "modesls/crops.h5",
             # /modesls/crops.h5
-            "/crops.h5",
+            "/tmp/crops.h5",
         )
-        model = load_model("/crops.h5")
+        model = tf.keras.saving.load_model("/tmp/crops.h5")
 
     image = request.files["file"]
 
