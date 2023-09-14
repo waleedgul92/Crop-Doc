@@ -30,11 +30,11 @@ def predict(request):
     if model is None:
         download_blob(
             BUCKET_NAME,
-            "modesls/crops.h5",
+            "modesls/cotton_2.h5",
             # /modesls/crops.h5
-            "/tmp/crops.h5",
+            "/tmp/cotton_2.h5",
         )
-        model = tf.keras.saving.load_model("/tmp/crops.h5")
+        model = tf.keras.saving.load_model("/tmp/cotton_2.h5")
 
     image = request.files["file"]
 
