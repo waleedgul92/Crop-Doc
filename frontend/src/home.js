@@ -3,14 +3,12 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Paper, CardActionArea, CardMedia, Grid, TableContainer, Table, TableBody, TableHead, TableRow, TableCell, Button, CircularProgress } from "@material-ui/core";
-import cblogo from "./cblogo.PNG";
-import image from "./bg.png";
+import image from "./bg_img.jpg";
 import { DropzoneArea } from 'material-ui-dropzone';
 import { common } from '@material-ui/core/colors';
 import Clear from '@material-ui/icons/Clear';
@@ -62,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    height: "93vh",
-    marginTop: "8px",
+    height: "100vh",
+    backgroundColor: "white"
   },
   imageCard: {
     margin: "auto",
-    maxWidth: 400,
+    width: "30%",
     height: 500,
     backgroundColor: 'transparent',
     boxShadow: '0px 9px 70px 0px rgb(0 0 0 / 30%) !important',
@@ -123,8 +121,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'white !important',
     textAlign: 'center',
   },
+  title:{
+    color:'black',
+    borderStyle:'outset',
+    borderRadius: '10px 10px 10px 10px',
+    backgroundColor: 'white',
+    border:'5px solid'    
+  },
   buttonGrid: {
-    maxWidth: "416px",
     width: "100%",
   },
   detail: {
@@ -135,12 +139,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   appbar: {
-    background: '#be6a77',
+    background: '#ffffff',
     boxShadow: 'none',
-    color: 'white'
+    color: 'black'
   },
   loader: {
-    color: '#be6a77 !important',
+    color: '#ffffff !important',
+  },
+  customDropzoneText:{
+    color: '#616161'
   }
 }));
 export const ImageUpload = () => {
@@ -212,11 +219,9 @@ export const ImageUpload = () => {
     <React.Fragment>
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Cotton Disease Classification
+          <Typography className={classes.title} variant="h5" noWrap>
+            Crop Doc 🌱
           </Typography>
-          <div className={classes.grow} />
-          <Avatar src={cblogo}></Avatar>
         </Toolbar>
       </AppBar>
       <Container maxWidth={false} className={classes.mainContainer} disableGutters={true}>
@@ -242,9 +247,13 @@ export const ImageUpload = () => {
               {!image && <CardContent className={classes.content}>
                 <DropzoneArea
                   acceptedFiles={['image/*']}
-                  dropzoneText={"Drag and drop an image of a cotton plant or leaf to process"}
+                  dropzoneText={
+                    <span className={classes.customDropzoneText}>
+                      Click Here and Select a Photo to Predict Health
+                    </span>
+                  }
                   onChange={onSelectFile}
-                />
+                  />
               </CardContent>}
               {data && <CardContent className={classes.detail}>
                 <TableContainer component={Paper} className={classes.tableContainer}>
