@@ -8,5 +8,7 @@
 - Got a accuracy of 100 percent on diseased and 88 percent on diseased and non diseased plants.
 - Deployed the model on   GCP cloud, api can be found at: https://us-central1-crop-doc-398615.cloudfunctions.net/predict
 - Later the UI is developed using a template to use to api
+
+
 https://github.com/waleedgul92/Crop-Doc/assets/84980384/d2c43285-1b93-4c9e-a9f5-843dfabd361f
 
